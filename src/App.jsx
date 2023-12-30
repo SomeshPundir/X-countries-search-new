@@ -21,12 +21,28 @@ const searchStyle = {
   fontSize: '16px',
 };
 
+// const containerStyle = {
+  
+//   display: 'flex',
+//   flexWrap: 'wrap',
+//   justifyContent: 'center',
+//   alignItems: 'center',
+//   padding: '80px 20px',
+// };
 const containerStyle = {
   display: 'flex',
   flexWrap: 'wrap',
+  marginTop: '0!important',
+
   justifyContent: 'center',
-  alignItems: 'center',
+  alignItems: 'flex-start', // Change to 'flex-start'
   padding: '80px 20px',
+};
+
+const imageStyle = {
+  width: '100px',
+  height: '100px',
+  margin: '0', // Add margin: 0
 };
 
 const cardStyle = {
@@ -39,12 +55,13 @@ const cardStyle = {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
+  marginTop: '0',
 };
 
-const imageStyle = {
-  width: '100px',
-  height: '100px',
-};
+// const imageStyle = {
+//   width: '100px',
+//   height: '100px',
+// };
 
 function App() {
   const [countries, setCountries] = useState([]);
