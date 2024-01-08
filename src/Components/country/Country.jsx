@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Country.module.css";
+import styles from "./Country.module.css"; // Import your CSS module
 
-const Country = () => {
+const CountrySearch = () => {
   const [apiData, setApiData] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -19,16 +19,13 @@ const Country = () => {
     fetchData();
   }, []);
 
-  const filteredCountries = apiData
-    ? apiData.filter((country) =>
-        country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    : [];
+  const filteredCountries = (apiData || []).filter((country) =>
+    country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-  
     <>
-      <div className={styles.headerStyle}>
+      {/* <div className={styles.headerStyle}>
         <input
           type="text"
           placeholder="Search for countries..."
@@ -48,13 +45,31 @@ const Country = () => {
             <h2>{country.name.common}</h2>
           </div>
         ))}
-      </div>
-    </>
-  );
-}
-
+      </div> */}
     
+<div className={styles.searchHeader}>
+  <input
+    type="text"
+    placeholder="Search for countries..."
+    className={styles.searchInput}
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+  />
+</div>
+<div className={styles.countryContainer}>
+  {filteredCountries.map((country) => (
+    <div key={country.cca3} className={styles.countryCard}>
+      <img
+        src={country.flags.png}
+        alt={`Flag of ${country.name.common}`}
+        className={styles.countryImage}
+      />
+      <h2>{country.name.common}</h2>
+    </div>
+  ))}
+</div>
+ </>
+  );
+};
 
-
-
-export default Country;
+export default CountrySearch;
